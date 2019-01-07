@@ -1,0 +1,75 @@
+entity Application  (application) {
+    applicationKey String required
+    applicationName String required
+    smsActive Boolean
+    systemActive Boolean
+    emailActive Boolean
+}
+
+
+entity NotificationDefination (notification_defination) {
+    notificationKey String required
+    channelName Channel required
+    templatePath String required
+    isActive Boolean
+    sourceType String required
+}
+
+
+entity ApiDefination (api){
+	apiKey String required
+	apiType ApiType required
+    apiUrl String required
+}
+
+
+entity ApiParam (api_param) {
+	paramType ParamType required
+    paramName String required
+    paramDefaultValue String required
+}
+
+entity SourceType  (source_type){
+	sourceType String required
+}
+
+//////enums /////
+enum ParamType{
+	HEADER, BODY , PATH_PARAM , QUERY_PARAM   
+}
+
+enum ApiType {
+ GET, POST
+ }
+ 
+ 
+enum Channel {
+ EMAIL, SMS, SYSTEM
+ }
+
+////////////////////////////////////////////
+///////////////////relations ///////////////////
+
+relationship ManyToMany {
+NotificationDefination to Application 
+NotificationDefination to ApiDefination
+
+}
+relationship OneToMany{ 
+  
+    ApiDefination to ApiParam
+  
+}
+
+////////////////////////////
+paginate Application, NotificationDefination, ApiDefination, ApiParam, SourceType  with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+// Set service optionsto all except SourceType, APIType, ParamType
+service all with serviceImpl except ApiType, ParamType, Channel
+//microservice * with notification
+
+//microservice * 
+// Set an angular suffix 
+// angularSuffix * with mySuffix
