@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.home.title">Notification Definations</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-notification-defination" [routerLink]="['/notification-defination/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.home.createLabel">
+            Create new Notification Defination
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="notificationDefinations">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="notificationKey"><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.notificationKey">Notification Key</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="channelName"><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.channelName">Channel Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="templatePath"><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.templatePath">Template Path</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="isActive"><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.isActive">Is Active</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sourceType"><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.sourceType">Source Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let notificationDefination of notificationDefinations ;trackBy: trackId">
+                <td><a [routerLink]="['/notification-defination', notificationDefination.id, 'view' ]">{{notificationDefination.id}}</a></td>
+                <td>{{notificationDefination.notificationKey}}</td>
+                <td jhiTranslate="{{'jhipsterSampleApplicationApp.Channel.' + notificationDefination.channelName}}">{{notificationDefination.channelName}}</td>
+                <td>{{notificationDefination.templatePath}}</td>
+                <td>{{notificationDefination.isActive}}</td>
+                <td>{{notificationDefination.sourceType}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/notification-defination', notificationDefination.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/notification-defination', notificationDefination.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'notification-defination/'+ notificationDefination.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="notificationDefinations && notificationDefinations.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
