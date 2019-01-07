@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="application">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.application.detail.title">Application</span> {{application.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.application.applicationKey">Application Key</span></dt>
+                <dd>
+                    <span>{{application.applicationKey}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.application.applicationName">Application Name</span></dt>
+                <dd>
+                    <span>{{application.applicationName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.application.smsActive">Sms Active</span></dt>
+                <dd>
+                    <span>{{application.smsActive}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.application.systemActive">System Active</span></dt>
+                <dd>
+                    <span>{{application.systemActive}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.application.emailActive">Email Active</span></dt>
+                <dd>
+                    <span>{{application.emailActive}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.application.notificationDefination">Notification Defination</span></dt>
+                <dd>
+                    <span *ngFor="let notificationDefination of application.notificationDefinations; let last = last">
+                        <a [routerLink]="['/notification-defination', notificationDefination?.id, 'view' ]">{{notificationDefination.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/application', application.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

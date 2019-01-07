@@ -1,0 +1,24 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "apiParam": {
+            "home": {
+                "title": "Api Params",
+                "createLabel": "Create a new Api Param",
+                "createOrEditLabel": "Create or edit a Api Param"
+            },
+            "created": "A new Api Param is created with identifier {{ param }}",
+            "updated": "A Api Param is updated with identifier {{ param }}",
+            "deleted": "A Api Param is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Api Param {{ id }}?"
+            },
+            "detail": {
+                "title": "Api Param"
+            },
+            "paramType": "Param Type",
+            "paramName": "Param Name",
+            "paramDefaultValue": "Param Default Value",
+            "apiDefination": "Api Defination"
+        }
+    }
+}

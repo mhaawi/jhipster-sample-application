@@ -1,0 +1,51 @@
+{
+    "name": "ApiDefination",
+    "fields": [
+        {
+            "fieldName": "apiKey",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "apiType",
+            "fieldType": "ApiType",
+            "fieldValues": "GET,POST",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "apiUrl",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "apiParam",
+            "otherEntityName": "apiParam",
+            "otherEntityRelationshipName": "apiDefination"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "notificationDefination",
+            "otherEntityName": "notificationDefination",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "apiDefination"
+        }
+    ],
+    "changelogDate": "20190107195955",
+    "entityTableName": "api",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

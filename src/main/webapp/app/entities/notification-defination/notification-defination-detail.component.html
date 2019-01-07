@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="notificationDefination">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.detail.title">Notification Defination</span> {{notificationDefination.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.notificationKey">Notification Key</span></dt>
+                <dd>
+                    <span>{{notificationDefination.notificationKey}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.channelName">Channel Name</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.Channel.' + notificationDefination.channelName}}">{{notificationDefination.channelName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.templatePath">Template Path</span></dt>
+                <dd>
+                    <span>{{notificationDefination.templatePath}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.isActive">Is Active</span></dt>
+                <dd>
+                    <span>{{notificationDefination.isActive}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.sourceType">Source Type</span></dt>
+                <dd>
+                    <span>{{notificationDefination.sourceType}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.apiDefination">Api Defination</span></dt>
+                <dd>
+                    <span *ngFor="let apiDefination of notificationDefination.apiDefinations; let last = last">
+                        <a [routerLink]="['/api-defination', apiDefination?.id, 'view' ]">{{apiDefination.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/notification-defination', notificationDefination.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
