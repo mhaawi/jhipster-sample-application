@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="apiParam">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.apiParam.detail.title">Api Param</span> {{apiParam.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiParam.paramType">Param Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.ParamType.' + apiParam.paramType}}">{{apiParam.paramType}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiParam.paramName">Param Name</span></dt>
+                <dd>
+                    <span>{{apiParam.paramName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiParam.paramDefaultValue">Param Default Value</span></dt>
+                <dd>
+                    <span>{{apiParam.paramDefaultValue}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiParam.apiDefination">Api Defination</span></dt>
+                <dd>
+                    <div *ngIf="apiParam.apiDefination">
+                        <a [routerLink]="['/api-defination', apiParam.apiDefination?.id, 'view']">{{apiParam.apiDefination?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/api-param', apiParam.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

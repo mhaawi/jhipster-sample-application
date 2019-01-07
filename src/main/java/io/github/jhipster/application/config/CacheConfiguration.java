@@ -38,6 +38,16 @@ public class CacheConfiguration {
             cm.createCache(io.github.jhipster.application.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Application.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Application.class.getName() + ".notificationDefinations", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.NotificationDefination.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.NotificationDefination.class.getName() + ".apiDefinations", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.NotificationDefination.class.getName() + ".applications", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.ApiDefination.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.ApiDefination.class.getName() + ".apiParams", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.ApiDefination.class.getName() + ".notificationDefinations", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.ApiParam.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.SourceType.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

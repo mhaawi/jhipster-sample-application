@@ -1,0 +1,9 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "ApiType": {
+            "null": "",
+            "GET": "GET",
+            "POST": "POST"
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "name": "ApiParam",
+    "fields": [
+        {
+            "fieldName": "paramType",
+            "fieldType": "ParamType",
+            "fieldValues": "HEADER,BODY,PATH_PARAM,QUERY_PARAM",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "paramName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "paramDefaultValue",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "apiDefination",
+            "otherEntityName": "apiDefination",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190107195956",
+    "entityTableName": "api_param",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
