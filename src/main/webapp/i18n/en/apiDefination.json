@@ -1,0 +1,23 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "apiDefination": {
+            "home": {
+                "title": "Api Definations",
+                "createLabel": "Create a new Api Defination",
+                "createOrEditLabel": "Create or edit a Api Defination"
+            },
+            "created": "A new Api Defination is created with identifier {{ param }}",
+            "updated": "A Api Defination is updated with identifier {{ param }}",
+            "deleted": "A Api Defination is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Api Defination {{ id }}?"
+            },
+            "detail": {
+                "title": "Api Defination"
+            },
+            "apiKey": "Api Key",
+            "apiType": "Api Type",
+            "apiUrl": "Api Url"
+        }
+    }
+}

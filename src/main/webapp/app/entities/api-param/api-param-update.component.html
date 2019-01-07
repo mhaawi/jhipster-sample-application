@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-api-param-heading" jhiTranslate="jhipsterSampleApplicationApp.apiParam.home.createOrEditLabel">Create or edit a Api Param</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!apiParam.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="apiParam.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.apiParam.paramType" for="field_paramType">Param Type</label>
+                    <select class="form-control" name="paramType" [(ngModel)]="apiParam.paramType" id="field_paramType"  required>
+                        <option value="HEADER">{{'jhipsterSampleApplicationApp.ParamType.HEADER' | translate}}</option>
+                        <option value="BODY">{{'jhipsterSampleApplicationApp.ParamType.BODY' | translate}}</option>
+                        <option value="PATH_PARAM">{{'jhipsterSampleApplicationApp.ParamType.PATH_PARAM' | translate}}</option>
+                        <option value="QUERY_PARAM">{{'jhipsterSampleApplicationApp.ParamType.QUERY_PARAM' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.paramType?.dirty && editForm.controls.paramType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.paramType?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.apiParam.paramName" for="field_paramName">Param Name</label>
+                    <input type="text" class="form-control" name="paramName" id="field_paramName"
+                        [(ngModel)]="apiParam.paramName" required/>
+                    <div [hidden]="!(editForm.controls.paramName?.dirty && editForm.controls.paramName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.paramName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.apiParam.paramDefaultValue" for="field_paramDefaultValue">Param Default Value</label>
+                    <input type="text" class="form-control" name="paramDefaultValue" id="field_paramDefaultValue"
+                        [(ngModel)]="apiParam.paramDefaultValue" required/>
+                    <div [hidden]="!(editForm.controls.paramDefaultValue?.dirty && editForm.controls.paramDefaultValue?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.paramDefaultValue?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.apiParam.apiKey" for="field_apiKey">Api Key</label>
+                    <select class="form-control" id="field_apiKey" name="apiKey" [(ngModel)]="apiParam.apiKey" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="apiDefinationOption.id === apiParam.apiKey?.id ? apiParam.apiKey : apiDefinationOption" *ngFor="let apiDefinationOption of apidefinations; trackBy: trackApiDefinationById">{{apiDefinationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

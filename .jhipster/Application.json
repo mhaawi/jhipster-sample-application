@@ -1,0 +1,41 @@
+{
+    "name": "Application",
+    "fields": [
+        {
+            "fieldName": "applicationKey",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "applicationName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "smsActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "systemActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "emailActive",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190107204321",
+    "entityTableName": "application",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
