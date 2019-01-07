@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="apiDefination">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.apiDefination.detail.title">Api Defination</span> {{apiDefination.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiDefination.apiKey">Api Key</span></dt>
+                <dd>
+                    <span>{{apiDefination.apiKey}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiDefination.apiType">Api Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterSampleApplicationApp.ApiType.' + apiDefination.apiType}}">{{apiDefination.apiType}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiDefination.apiUrl">Api Url</span></dt>
+                <dd>
+                    <span>{{apiDefination.apiUrl}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/api-defination', apiDefination.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity NotificationDefination.
+    -->
+    <changeSet id="20190107204322-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="notification_definations_id"
+                                 baseTableName="notification_defination_application_name"
+                                 constraintName="notification_defination_applica_notification_definations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="notification_defination"/>
+        <addForeignKeyConstraint baseColumnNames="application_names_id"
+                                 baseTableName="notification_defination_application_name"
+                                 constraintName="notification_defination_applica_application_names_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="application"/>
+        
+        <addForeignKeyConstraint baseColumnNames="notification_definations_id"
+                                 baseTableName="notification_defination_api_key"
+                                 constraintName="fk_notification_defination_api_key_notification_definations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="notification_defination"/>
+        <addForeignKeyConstraint baseColumnNames="api_keys_id"
+                                 baseTableName="notification_defination_api_key"
+                                 constraintName="fk_notification_defination_api_key_api_keys_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="api"/>
+        
+    </changeSet>
+</databaseChangeLog>

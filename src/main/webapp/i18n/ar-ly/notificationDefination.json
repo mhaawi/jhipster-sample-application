@@ -1,0 +1,27 @@
+{
+    "jhipsterSampleApplicationApp": {
+        "notificationDefination": {
+            "home": {
+                "title": "Notification Definations",
+                "createLabel": "Create a new Notification Defination",
+                "createOrEditLabel": "Create or edit a Notification Defination"
+            },
+            "created": "A new Notification Defination is created with identifier {{ param }}",
+            "updated": "A Notification Defination is updated with identifier {{ param }}",
+            "deleted": "A Notification Defination is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Notification Defination {{ id }}?"
+            },
+            "detail": {
+                "title": "Notification Defination"
+            },
+            "notificationKey": "Notification Key",
+            "channelName": "Channel Name",
+            "templatePath": "Template Path",
+            "isActive": "Is Active",
+            "sourceType": "Source Type",
+            "applicationName": "Application Name",
+            "apiKey": "Api Key"
+        }
+    }
+}

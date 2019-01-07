@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-notification-defination-heading" jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.home.createOrEditLabel">Create or edit a Notification Defination</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!notificationDefination.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="notificationDefination.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.notificationKey" for="field_notificationKey">Notification Key</label>
+                    <input type="text" class="form-control" name="notificationKey" id="field_notificationKey"
+                        [(ngModel)]="notificationDefination.notificationKey" required/>
+                    <div [hidden]="!(editForm.controls.notificationKey?.dirty && editForm.controls.notificationKey?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.notificationKey?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.channelName" for="field_channelName">Channel Name</label>
+                    <select class="form-control" name="channelName" [(ngModel)]="notificationDefination.channelName" id="field_channelName"  required>
+                        <option value="EMAIL">{{'jhipsterSampleApplicationApp.Channel.EMAIL' | translate}}</option>
+                        <option value="SMS">{{'jhipsterSampleApplicationApp.Channel.SMS' | translate}}</option>
+                        <option value="SYSTEM">{{'jhipsterSampleApplicationApp.Channel.SYSTEM' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.channelName?.dirty && editForm.controls.channelName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.channelName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.templatePath" for="field_templatePath">Template Path</label>
+                    <input type="text" class="form-control" name="templatePath" id="field_templatePath"
+                        [(ngModel)]="notificationDefination.templatePath" required/>
+                    <div [hidden]="!(editForm.controls.templatePath?.dirty && editForm.controls.templatePath?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.templatePath?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.isActive" for="field_isActive">Is Active</label>
+                    <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                        [(ngModel)]="notificationDefination.isActive" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.sourceType" for="field_sourceType">Source Type</label>
+                    <input type="text" class="form-control" name="sourceType" id="field_sourceType"
+                        [(ngModel)]="notificationDefination.sourceType" required/>
+                    <div [hidden]="!(editForm.controls.sourceType?.dirty && editForm.controls.sourceType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.sourceType?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.applicationName" for="field_applicationName">Application Name</label>
+                    <select class="form-control" id="field_applicationName" multiple name="applicationName" [(ngModel)]="notificationDefination.applicationNames">
+                        <option [ngValue]="getSelected(notificationDefination.applicationNames, applicationOption)" *ngFor="let applicationOption of applications; trackBy: trackApplicationById">{{applicationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.notificationDefination.apiKey" for="field_apiKey">Api Key</label>
+                    <select class="form-control" id="field_apiKey" multiple name="apiKey" [(ngModel)]="notificationDefination.apiKeys">
+                        <option [ngValue]="getSelected(notificationDefination.apiKeys, apiDefinationOption)" *ngFor="let apiDefinationOption of apidefinations; trackBy: trackApiDefinationById">{{apiDefinationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
